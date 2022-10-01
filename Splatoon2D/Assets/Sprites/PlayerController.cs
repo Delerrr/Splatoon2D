@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //当前所持武器
+    private GameObject weapon;
+    //三种武器：枪(1)、镭射枪(2)、炸弹(3)
+    private int weapontag1 = 0;
+    private int weapontag2 = 1;
+    private string[,] weaponname;
     //动画控制器组件
     private Animator animator;
     //是否潜水
@@ -27,16 +33,45 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        weaponname = new string[3,4];
+
+        weaponname[0,0] = "gun_up";
+        weaponname[0,1] = "gun_down";
+        weaponname[0,2] = "gun_side";
+        weaponname[0,3] = "gun_sideright";
+
+        weaponname[1,0] = "laser_up";
+        weaponname[1,1] = "laser_down";
+        weaponname[1,2] = "laser_side";
+        weaponname[1,3] = "laser_sideright";
+
+        weaponname[2,0] = "bomb_up";
+        weaponname[2,1] = "bomb_down";
+        weaponname[2,2] = "bomb_side";
+        weaponname[2,3] = "bomb_sideright";
+
+        foreach (Transform eachChild in transform) {
+            if (eachChild.name == weaponname[weapontag1, weapontag2]) {
+                eachChild.gameObject.SetActive(true);
+                weapon = eachChild.gameObject;
+                break;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //切换武器
+        SwitchWeapon();
+        //获取方向键
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+        //把移动方向信息发给动画控制器
         if (Mathf.Approximately(horizontal, 0) && Mathf.Approximately(vertical, 0)) {
             is_walking = false;
             animator.SetBool("IsWalking", is_walking);
@@ -61,6 +96,33 @@ public class PlayerController : MonoBehaviour
         move();
     }
 
+    void SwitchWeapon() {
+        if (Input.GetKeyDown(KeyCode.Alpha1) && weapontag1 != 0) {
+                weapontag1 = 0;
+        } else if (Input.GetKeyDown(KeyCode.Alpha2) && weapontag1 != 1) {
+                weapontag1 = 1;
+        } else if (Input.GetKeyDown(KeyCode.Alpha3) && weapontag1 != 2) {
+                weapontag1 = 2;
+        }
+        //根据移动方向切换武器方向
+        if (standPosX == 0) {
+            weapontag2 = (1 - (int)standPosY) / 2;
+        } else {
+            weapontag2 = ((int)standPosX - 1) / 2 + 3;
+        }
+        weapon.SetActive(false);
+        ShowWeapon();
+    }
+    //显示出武器，通过设置gameObject.renderer.enabled来实现
+    void ShowWeapon() {
+        foreach (Transform eachChild in transform) {
+            if (eachChild.name == weaponname[weapontag1, weapontag2]) {
+                eachChild.gameObject.SetActive(true);
+                weapon = eachChild.gameObject;
+                break;
+            }
+        }
+    }
     private void move() {
         float xPos, yPos;
         if (is_diving) {
