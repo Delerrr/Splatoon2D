@@ -71,24 +71,34 @@ public class PlayerController : MonoBehaviour
         //获取方向键
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        //把移动方向信息发给动画控制器
-        if (Mathf.Approximately(horizontal, 0) && Mathf.Approximately(vertical, 0)) {
-            is_walking = false;
-            animator.SetBool("IsWalking", is_walking);
-            animator.SetFloat("StandPos X", standPosX);
-            animator.SetFloat("StandPos Y", standPosY);
-        } else {
-            is_walking = true;
-            animator.SetBool("IsWalking", is_walking);
-            standPosX = horizontal < 0 ? -1 : horizontal > 0 ? 1 : 0;
-            standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
-        }
+        //是否潜水
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
             is_diving = true;
-            animator.SetBool("ISDiving", is_diving);
+            animator.SetBool("IsDiving", is_diving);
+            is_walking = false;
         } else if (Input.GetKeyUp(KeyCode.LeftShift)) {
             is_diving = false;
-            animator.SetBool("ISDiving", is_diving);
+            animator.SetBool("IsDiving", is_diving);
+        }
+        //有方向键输入，则要么walk要么dive
+        if (!Mathf.Approximately(horizontal, 0) || !Mathf.Approximately(vertical, 0)) {
+            //潜水
+            if (is_diving) {
+                weapon.SetActive(false);
+            } else {
+                is_walking = true;
+                animator.SetBool("IsWalking", is_walking);
+            }
+            standPosX = horizontal < 0 ? -1 : horizontal > 0 ? 1 : 0;
+            standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
+            animator.SetFloat("Pos X", standPosX);
+            animator.SetFloat("Pos Y", standPosY);
+        } else {
+            is_walking = false;
+            animator.SetBool("IsWalking", is_walking);
+            //把移动方向信息发给动画控制器
+            animator.SetFloat("StandPos X", standPosX);
+            animator.SetFloat("StandPos Y", standPosY);
         }
     }
 
