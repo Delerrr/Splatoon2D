@@ -75,10 +75,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //·¢Éä×Óµ¯
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !is_diving) {
             GameObject bullet = Instantiate(bullets[weapontag1], rigidbody2d.position + Vector2.up * 2f, Quaternion.identity);
-            BulletController bulletscript = bullet.GetComponent<BulletController>();
-            bulletscript.Launch(worldtilemap);
+            if (weapontag1 == 0) {
+                SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
+                bulletscript.Launch(worldtilemap);
+            } else {
+                LaserBulletController bulletscript = bullet.GetComponent<LaserBulletController>();
+                bulletscript.Launch(worldtilemap);
+            }
         }
         //ÇÐ»»ÎäÆ÷
         SwitchWeapon();

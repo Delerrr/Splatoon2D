@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class BulletController : MonoBehaviour
+public class LaserBulletController : MonoBehaviour
 {
     //Tilemap组件，用于涂色
     public Tilemap worldtilemap;
@@ -23,27 +23,20 @@ public class BulletController : MonoBehaviour
 
     private void Update() {
         TimeFlew += Time.deltaTime;
-        //子弹消失时开始染色
+        Vector3Int tilePosition = worldtilemap.WorldToCell(transform.position);
+        if (worldtilemap.HasTile(tilePosition)) {
+            worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
+            Color newcolor = new Color(Bulletcolor.r, Bulletcolor.g, Bulletcolor.b);
+            worldtilemap.SetColor(tilePosition, newcolor);
+            tilePosition.x -= 1;
+            worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
+            worldtilemap.SetColor(tilePosition, newcolor);
+            tilePosition.x += 2;
+            worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
+            worldtilemap.SetColor(tilePosition, newcolor);
+        }
+        //销毁
         if (TimeFlew >= FlyTime) {
-            Vector3Int tilePosition = worldtilemap.WorldToCell(transform.position);
-            if (worldtilemap.HasTile(tilePosition)) {
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                Color newcolor = new Color(Bulletcolor.r, Bulletcolor.g, Bulletcolor.b);
-                worldtilemap.SetColor(tilePosition, newcolor);
-                tilePosition.x -= 1;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
-                tilePosition.x += 2;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
-                tilePosition.x -= 1;
-                tilePosition.y -= 1;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
-                tilePosition.y += 2;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
-            }
             Destroy(gameObject);
             return;
         }
