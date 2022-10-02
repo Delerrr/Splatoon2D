@@ -37,15 +37,22 @@ public class PlayerController : MonoBehaviour
     //刚体组件
     Rigidbody2D rigidbody2d;
     //生命值
-    public int maxHealth = 100;
-    private int currentHealth; 
+    public float maxHealth = 100;
+    private float currentHealth; 
+    //墨水值
+    public float maxInk = 20;
+    private float currentInk;
+    //每秒回复的墨水量
+    public float inkIncreaseSpeed = 5;
+    //各武器消耗墨水的量
+    public float smallBulletInkConsume = 2;
+    public float laserBulletInkConsume = 8;
     // Start is called before the first frame update
     void Start()
     {
-
-        playercolor = new Color(52, 204, 45);
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        currentInk = maxInk;
         animator = GetComponent<Animator>();
         //子弹发射时的位置（相对于玩家）
         BulletLauncPos = new Vector3[2, 4];
@@ -89,14 +96,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //发射子弹
-        if (Input.GetMouseButtonDown(0) && !is_diving) {
+        if (Input.GetMouseButtonDown(0) && !is_diving && !Mathf.Approximately(currentInk, 0)) {
             GameObject bullet = Instantiate(bullets[weapontag1], transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
             if (weapontag1 == 0) {
                 SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
                 bulletscript.Launch(worldtilemap);
+                ChangeInk(-smallBulletInkConsume);
             } else {
                 LaserBulletController bulletscript = bullet.GetComponent<LaserBulletController>();
                 bulletscript.Launch(worldtilemap);
+                ChangeInk(-laserBulletInkConsume);
             }
         }
         //切换武器
@@ -105,33 +114,47 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         //是否潜水
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            is_diving = true;
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            Vector3Int tilePosition = worldtilemap.WorldToCell(transform.position);
+            Color tilecolor = worldtilemap.GetColor(tilePosition);
+            if (Mathf.Approximately(tilecolor.r, playercolor.r) &&
+                Mathf.Approximately(tilecolor.g, playercolor.g) &&
+                Mathf.Approximately(tilecolor.b, playercolor.b)) {
+                is_diving = true;
+                animator.SetBool("IsDiving", is_diving);
+                is_walking = false;
+            } else {
+                is_diving = false;
+            }
             animator.SetBool("IsDiving", is_diving);
-            is_walking = false;
-        } else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+        } else {
             is_diving = false;
             animator.SetBool("IsDiving", is_diving);
         }
-        //有方向键输入，则要么walk要么dive
-        if (!Mathf.Approximately(horizontal, 0) || !Mathf.Approximately(vertical, 0)) {
-            //潜水
-            if (is_diving) {
-                weapon.SetActive(false);
-            } else {
-                is_walking = true;
-                animator.SetBool("IsWalking", is_walking);
+        //如果潜水, 则一定回复墨水
+        if (is_diving) {
+            //回复墨水
+            ChangeInk(inkIncreaseSpeed * Time.deltaTime);
+            weapon.SetActive(false);
+            //有移动
+            if (!Mathf.Approximately(horizontal, 0) || !Mathf.Approximately(vertical, 0)) {
+                standPosX = horizontal < 0 ? -1 : horizontal > 0 ? 1 : 0;
+                standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
+                animator.SetFloat("Pos X", standPosX);
+                animator.SetFloat("Pos Y", standPosY);
             }
-            standPosX = horizontal < 0 ? -1 : horizontal > 0 ? 1 : 0;
-            standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
-            animator.SetFloat("Pos X", standPosX);
-            animator.SetFloat("Pos Y", standPosY);
         } else {
-            is_walking = false;
+            //有方向键输入，则walk
+            if (!Mathf.Approximately(horizontal, 0) || !Mathf.Approximately(vertical, 0)) {
+                is_walking = true;
+                standPosX = horizontal < 0 ? -1 : horizontal > 0 ? 1 : 0;
+                standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
+                animator.SetFloat("Pos X", standPosX);
+                animator.SetFloat("Pos Y", standPosY);
+            } else {
+                is_walking = false;
+            }
             animator.SetBool("IsWalking", is_walking);
-            //把移动方向信息发给动画控制器
-            animator.SetFloat("StandPos X", standPosX);
-            animator.SetFloat("StandPos Y", standPosY);
         }
     }
 
@@ -185,5 +208,15 @@ public class PlayerController : MonoBehaviour
         position.x += xPos;
         position.y += yPos;
         rigidbody2d.position = position;
+    }
+
+    public void ChangeHealth(float amount) {
+        currentHealth = Mathf.Clamp(amount + currentHealth, 0, maxHealth);
+        HealthBarController.HealthBar.setValue(currentHealth / maxHealth);
+    }
+
+    private void ChangeInk(float amount) {
+        currentInk = Mathf.Clamp(amount + currentInk, 0, maxInk);
+        InkBarController.InkBar.setValue(currentInk / maxInk);
     }
 }
