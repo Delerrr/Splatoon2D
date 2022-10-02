@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    //子弹发射时相对于玩家的位置
+    private Vector3[,] BulletLauncPos;
     //Tilemap组件，用于涂色
     public Tilemap worldtilemap;
     //子弹预制件
@@ -45,6 +47,18 @@ public class PlayerController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        //子弹发射时的位置（相对于玩家）
+        BulletLauncPos = new Vector3[2, 4];
+        BulletLauncPos[0, 0] = new Vector3(-0.08f, 1.864f);
+        BulletLauncPos[0, 1] = new Vector3(-0.376f, -0.009f);
+        BulletLauncPos[0, 2] = new Vector3(-1.025f, 0.756f);
+        BulletLauncPos[0, 3] = new Vector3(0.180f, 0.852f);
+        BulletLauncPos[1, 0] = new Vector3(0f, 2.084f);
+        BulletLauncPos[1, 1] = new Vector3(-0.356f, -0.152f);
+        BulletLauncPos[1, 2] = new Vector3(-1.417f, 0.784f);
+        BulletLauncPos[1, 3] = new Vector3(0.752f, 0.708f);
+
+        //枪的四种方向
         weaponname = new string[3,4];
 
         weaponname[0,0] = "gun_up";
@@ -76,7 +90,7 @@ public class PlayerController : MonoBehaviour
     {
         //发射子弹
         if (Input.GetMouseButtonDown(0) && !is_diving) {
-            GameObject bullet = Instantiate(bullets[weapontag1], rigidbody2d.position + Vector2.up * 2f, Quaternion.identity);
+            GameObject bullet = Instantiate(bullets[weapontag1], transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
             if (weapontag1 == 0) {
                 SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
                 bulletscript.Launch(worldtilemap);

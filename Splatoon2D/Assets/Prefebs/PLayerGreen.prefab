@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8692484829911115342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ---gun---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4083229929505277807}
   - component: {fileID: 5221022262380561355}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gun_side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,6 +361,7 @@ Transform:
   - {fileID: 9115726871397283413}
   - {fileID: 4324096138829377470}
   - {fileID: 6205976801920966143}
+  - {fileID: 6453504258626911529}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,9 +403,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1920105705
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8793639957104055765, guid: 9c447c54c8e0416e9446cadb88c48fd3,
     type: 3}
   m_Color: {r: 0.20312016, g: 0.8018868, b: 0.17777678, a: 1}
@@ -767,7 +768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2871106163089865906}
   - component: {fileID: 5538540938824723094}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gun_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,6 +928,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8899953285189775690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6453504258626911529}
+  m_Layer: 0
+  m_Name: Location
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6453504258626911529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899953285189775690}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.208, y: 0.852, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6205976800987683287}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8937071514572312929
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4782142048742767131}
   - component: {fileID: 743373634677994771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: gun_sideright
   m_TagString: Untagged
   m_Icon: {fileID: 0}

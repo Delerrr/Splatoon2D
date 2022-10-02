@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2420469479300024785}
   - component: {fileID: -5418667715430513900}
   - component: {fileID: 8292983235602561625}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: LaserBulletsGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1115682805434658061, guid: 34a83f07b212a8e448b59ed2bbefb190,
     type: 3}
   m_Color: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 1}
@@ -148,6 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldtilemap: {fileID: 0}
-  FlyTime: 3
+  FlyTime: 1
   Bulletcolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
-  force: 800
+  force: 1500

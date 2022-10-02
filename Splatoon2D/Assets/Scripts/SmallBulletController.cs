@@ -5,8 +5,10 @@ using UnityEngine.Tilemaps;
 
 public class SmallBulletController : MonoBehaviour
 {
+    //是否已经发射，用于决定update中是否进行染色
+    bool IsLaunched = false;
     //Tilemap组件，用于涂色
-    public Tilemap worldtilemap;
+    Tilemap worldtilemap;
     //飞行时间
     public float FlyTime = 0.5f;
     private float TimeFlew = 0f;
@@ -22,6 +24,9 @@ public class SmallBulletController : MonoBehaviour
     }
 
     private void Update() {
+        if (!IsLaunched) {
+            return;
+        }
         TimeFlew += Time.deltaTime;
         //子弹消失时开始染色
         if (TimeFlew >= FlyTime) {
@@ -49,6 +54,7 @@ public class SmallBulletController : MonoBehaviour
         }
     }
     public void Launch(Tilemap tilemap) {
+        IsLaunched = true;
         worldtilemap = tilemap;
         Vector2 Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Pos.x -= transform.position.x;
