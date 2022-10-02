@@ -14,5 +14,4 @@ public class iconcontroller : MonoBehaviour
         Vector3 vector3 = Input.mousePosition;
         GUI.DrawTexture(new Rect(vector3.x - texture.width/2, (Screen.height - vector3.y) - texture.height/2, texture.width, texture.height), texture);
     }
- 
 }

@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
+    //Tilemap组件，用于涂色
+    public Tilemap worldtilemap;
+    //子弹预制件
+    public GameObject[] bullets;
+    //颜色
+    public Color playercolor;
     //当前所持武器
     private GameObject weapon;
     //三种武器：枪(1)、镭射枪(2)、炸弹(3)
@@ -34,6 +41,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 
+        playercolor = new Color(52, 204, 45);
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
@@ -66,6 +74,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //发射子弹
+        if (Input.GetMouseButtonDown(0)) {
+            GameObject bullet = Instantiate(bullets[weapontag1], rigidbody2d.position + Vector2.up * 2f, Quaternion.identity);
+            BulletController bulletscript = bullet.GetComponent<BulletController>();
+            bulletscript.Launch(worldtilemap);
+        }
         //切换武器
         SwitchWeapon();
         //获取方向键

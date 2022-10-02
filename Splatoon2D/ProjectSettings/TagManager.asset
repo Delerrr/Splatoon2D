@@ -45,3 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 1920105705
+    locked: 0
+  - name: Buiding
+    uniqueID: 323263115
+    locked: 0
