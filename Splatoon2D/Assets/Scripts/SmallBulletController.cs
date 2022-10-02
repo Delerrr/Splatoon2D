@@ -7,8 +7,8 @@ public class SmallBulletController : MonoBehaviour
 {
     //是否已经发射，用于决定update中是否进行染色
     bool IsLaunched = false;
-    //Tilemap组件，用于涂色
-    Tilemap worldtilemap;
+    //TilemapController组件，用于涂色
+    TilemapController tilemapcontroller;
     //飞行时间
     public float FlyTime = 0.5f;
     private float TimeFlew = 0f;
@@ -21,6 +21,7 @@ public class SmallBulletController : MonoBehaviour
     void Awake()
     {
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
+        tilemapcontroller = gameObject.GetComponent<TilemapController>();
     }
 
     private void Update() {
@@ -30,32 +31,25 @@ public class SmallBulletController : MonoBehaviour
         TimeFlew += Time.deltaTime;
         //子弹消失时开始染色
         if (TimeFlew >= FlyTime) {
-            Vector3Int tilePosition = worldtilemap.WorldToCell(transform.position);
-            if (worldtilemap.HasTile(tilePosition)) {
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
+                Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
                 Color newcolor = new Color(Bulletcolor.r, Bulletcolor.g, Bulletcolor.b);
-                worldtilemap.SetColor(tilePosition, newcolor);
+                tilemapcontroller.UpdateColor(tilePosition, newcolor);
                 tilePosition.x -= 1;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
+                tilemapcontroller.UpdateColor(tilePosition, newcolor);
                 tilePosition.x += 2;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
+                tilemapcontroller.UpdateColor(tilePosition, newcolor);
                 tilePosition.x -= 1;
                 tilePosition.y -= 1;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
+                tilemapcontroller.UpdateColor(tilePosition, newcolor);
                 tilePosition.y += 2;
-                worldtilemap.SetTileFlags(tilePosition, TileFlags.None);
-                worldtilemap.SetColor(tilePosition, newcolor);
-            }
+                tilemapcontroller.UpdateColor(tilePosition, newcolor);
             Destroy(gameObject);
             return;
         }
     }
-    public void Launch(Tilemap tilemap) {
+    public void Launch(TilemapController controller) {
+        tilemapcontroller = controller;
         IsLaunched = true;
-        worldtilemap = tilemap;
         Vector2 Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Pos.x -= transform.position.x;
         Pos.y -= transform.position.y;

@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 8019011076215781112}
   - component: {fileID: 1698717904615802100}
   - component: {fileID: 2441738865122191155}
+  - component: {fileID: 3830981331337985710}
   m_Layer: 8
   m_Name: PLayerGreen
   m_TagString: Player
@@ -450,14 +451,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b3f33322b4ff54da0e0c14ac0c9bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldtilemap: {fileID: 0}
+  PlayerColorTag: 0
+  ScoreText: {fileID: 0}
   bullets:
   - {fileID: 5610653080530013679, guid: 0494885312c43544eaaa1ff79dbb18cc, type: 3}
   - {fileID: 5610653080530013679, guid: d5660cc467878f74b98bc36155ca1791, type: 3}
   playercolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
-  dive_speed: 8
+  dive_speed: 9
   walk_speed: 5
   maxHealth: 100
+  maxInk: 100
+  inkIncreaseSpeed: 15
+  smallBulletInkConsume: 2
+  laserBulletInkConsume: 8
 --- !u!50 &1698717904615802100
 Rigidbody2D:
   serializedVersion: 4
@@ -505,6 +511,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57167244, y: 0.5461576}
   m_EdgeRadius: 0
+--- !u!114 &3830981331337985710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205976800987683284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldtilemap: {fileID: 0}
+  Green: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  Blue: {r: 0, g: 0, b: 0, a: 0}
+  Red: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6205976801920966141
 GameObject:
   m_ObjectHideFlags: 0
