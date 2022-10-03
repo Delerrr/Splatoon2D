@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //是否死亡，用于显示相关界面
+    public static bool IsDead = false;
     //子弹发射时相对于玩家的位置
     private Vector3[,] BulletLauncPos;
     //TilemapControler组件，用于发射子弹（最终用于染色）
@@ -222,6 +224,9 @@ public class PlayerController : MonoBehaviour
     public void ChangeHealth(float amount) {
         currentHealth = Mathf.Clamp(amount + currentHealth, 0, maxHealth);
         HealthBarController.HealthBar.setValue(currentHealth / maxHealth);
+        if (Mathf.Approximately(currentHealth, 0)) {
+            IsDead = true;
+        }
     }
 
     private void ChangeInk(float amount) {
