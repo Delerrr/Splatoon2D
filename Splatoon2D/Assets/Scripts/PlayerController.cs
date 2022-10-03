@@ -6,15 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    //玩家颜色（用int表示，用于调用tilemapcontroller.GetScore）
-    public int PlayerColorTag;
-    //在UI中显示分数
-    public TMPro.TextMeshProUGUI ScoreText;
-    //分数
-    private int Score = 0;
     //子弹发射时相对于玩家的位置
     private Vector3[,] BulletLauncPos;
-    //TilemapControler组件，用于记录分数
+    //TilemapControler组件，用于发射子弹（最终用于染色）
     TilemapController tilemapcontroller;
     //子弹预制件
     public GameObject[] bullets;
@@ -22,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public Color playercolor;
     //当前所持武器
     private GameObject weapon;
-    //三种武器：枪(1)、镭射枪(2)、炸弹(3)
+    //三种武器：新叶枪(1)、远距离喷涂枪（我称之为laser）(2)、炸弹(3)
     private int weapontag1 = 0;
     private int weapontag2 = 1;
     private string[,] weaponname;
@@ -103,8 +97,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //更新分数
-        ScoreText.text = $"Score: {tilemapcontroller.getScore(PlayerColorTag)}";
         //发射子弹
         if (Input.GetMouseButtonDown(0) && !is_diving && !Mathf.Approximately(currentInk, 0)) {
             GameObject bullet = Instantiate(bullets[weapontag1], transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
@@ -179,10 +171,6 @@ public class PlayerController : MonoBehaviour
         move();
     }
 
-    //打印分数
-    void ShowScore() {
-        ScoreText.text = "Score:\t" + Score;
-    }
     void SwitchWeapon() {
         if (Input.GetKeyDown(KeyCode.Alpha1) && weapontag1 != 0) {
                 weapontag1 = 0;
