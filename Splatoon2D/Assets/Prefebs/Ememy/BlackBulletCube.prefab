@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackbullet: {fileID: 5610653080530013679, guid: 200033a823c97354aa96cda8386d99b1,
     type: 3}
-  shootinterval: 0.5
+  shootinterval: 0.1
   BoxColor: {r: 0, g: 0, b: 0, a: 0.39215687}
   harm: 10
   speed: 10

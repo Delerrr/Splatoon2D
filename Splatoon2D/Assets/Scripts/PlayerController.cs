@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 100;
     private float currentHealth;
     //在敌人墨水中每秒失去的生命值
-    public float HealthDecreaseInOtherInkPerSec = 5f;
+    public float HealthDecreaseInOtherInkPerSec = 15f;
     private float HealthDecreaseTimePassed = 0;
     //墨水值
     public float maxInk = 20;
@@ -174,10 +174,10 @@ public class PlayerController : MonoBehaviour
         //是否在敌人的墨水中
         Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
         Color tilecolor = tilemapcontroller.GetColorInPos(tilePosition);
-        if (!tilemapcontroller.Colorcmp(playercolor, tilecolor) && !tilemapcontroller.Colorcmp(new Color(0, 0, 0), tilecolor)){ 
+        if (!tilemapcontroller.Colorcmp(playercolor, tilecolor) && !tilemapcontroller.Colorcmp(new Color(1, 1, 1, 1), tilecolor)){ 
             //在敌人的墨水中
             if (HealthDecreaseTimePassed >= 1f) {
-                ChangeHealth(HealthDecreaseInOtherInkPerSec);
+                ChangeHealth(-HealthDecreaseInOtherInkPerSec);
                 HealthDecreaseTimePassed = 0;
             } else {
                 HealthDecreaseTimePassed += Time.deltaTime;
