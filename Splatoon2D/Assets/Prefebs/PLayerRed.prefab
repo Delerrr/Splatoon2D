@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 2441738865122191155}
   - component: {fileID: 3830981331337985710}
   m_Layer: 8
-  m_Name: PLayerGreen
+  m_Name: PLayerRed
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 8793639957104055765, guid: 9c447c54c8e0416e9446cadb88c48fd3,
     type: 3}
-  m_Color: {r: 0.20312016, g: 0.8018868, b: 0.17777678, a: 1}
+  m_Color: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -451,12 +451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b3f33322b4ff54da0e0c14ac0c9bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorTag: 0
+  PlayerColorTag: 2
   ScoreText: {fileID: 0}
   bullets:
-  - {fileID: 5610653080530013679, guid: fc519508752abea4fa7077be224db48e, type: 3}
-  - {fileID: 5610653080530013679, guid: 9391f178acefa324abb1dae8b50f922d, type: 3}
-  playercolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
+  - {fileID: 5610653080530013679, guid: a567b06db6692cc4c8a76418086b5794, type: 3}
+  - {fileID: 5610653080530013679, guid: d5660cc467878f74b98bc36155ca1791, type: 3}
+  playercolor: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}
   dive_speed: 9
   walk_speed: 5
   maxHealth: 100

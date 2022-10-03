@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class SmallBulletController : MonoBehaviour
 {
+    //伤害值
+    public float HarmAmount = 5;
     //是否已经发射，用于决定update中是否进行染色
     bool IsLaunched = false;
     //TilemapController组件，用于涂色

@@ -168,6 +168,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //±»¹¥»÷
+    public void Attackted(Vector2 Pos, float HarmAmount) {
+        animator.SetTrigger("Hit");
+        animator.SetFloat("HitPosX", Pos.x);
+        animator.SetFloat("HitPosY", Pos.y);
+        ChangeHealth(-HarmAmount);
+    }
     private void FixedUpdate() {
         move();
     }

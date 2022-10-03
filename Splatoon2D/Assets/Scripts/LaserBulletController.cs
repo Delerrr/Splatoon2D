@@ -5,6 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class LaserBulletController : MonoBehaviour
 {
+    //伤害值
+    public float HarmAmount = 10f;
     //是否已经发射，用于决定update中是否进行染色
     bool IsLaunched = false;
 
