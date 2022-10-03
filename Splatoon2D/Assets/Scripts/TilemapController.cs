@@ -9,10 +9,15 @@ public class TilemapController : MonoBehaviour
     public  Color Green;
     public  Color Blue;
     public  Color Red;
-    private int GreenScore = 0;
-    private int BlueScore = 0;
-    private int RedScore = 0;
+    private static int GreenScore = 0;
+    private static int BlueScore = 0;
+    private static int RedScore = 0;
 
+    private void Start() {
+        BlueScore = 0;
+        GreenScore = 0;
+        RedScore = 0;
+    }
     public void UpdateColor(Vector3Int Pos, Color newColor) {
         if (Colorcmp(worldtilemap.GetColor(Pos), newColor)) {
             return;
@@ -44,11 +49,11 @@ public class TilemapController : MonoBehaviour
     }
     private void changeScore(string colorname, int amount) {
         if (colorname == "Green") {
-            GreenScore += amount;
+            GreenScore = Mathf.Clamp(GreenScore + amount, 0, 9999);
         } else if (colorname == "Blue") {
-            BlueScore += amount;
+            BlueScore = Mathf.Clamp(BlueScore + amount, 0, 9999);
         } else if (colorname == "red") {
-            RedScore += amount;
+            RedScore = Mathf.Clamp(RedScore + amount, 0, 9999);
         }
     }
 

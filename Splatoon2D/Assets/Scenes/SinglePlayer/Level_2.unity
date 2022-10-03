@@ -2310,6 +2310,10 @@ PrefabInstance:
       propertyPath: halfCycle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1587938598, guid: f8ea14d8662003d41accb6f5527e09af, type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
     - target: {fileID: 3350566376379375029, guid: f8ea14d8662003d41accb6f5527e09af,
         type: 3}
       propertyPath: m_Name
