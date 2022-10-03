@@ -2882,6 +2882,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackBulletCube
       objectReference: {fileID: 0}
+    - target: {fileID: 3634125255130078069, guid: 580078d8861eb244ab6317e1c26ca5f0,
+        type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5704329784371788802, guid: 580078d8861eb244ab6317e1c26ca5f0,
         type: 3}
       propertyPath: m_RootOrder

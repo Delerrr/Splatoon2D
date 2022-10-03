@@ -70,5 +70,15 @@ public class SmallBulletController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         Destroy(gameObject);
+        PlayerController playercontroller = other.gameObject.GetComponent<PlayerController>();
+        if (playercontroller != null) {
+            Vector2 otherPosition = other.transform.position;
+            Vector2 position = transform.position;
+            otherPosition.x -= position.x;
+            otherPosition.y -= position.y;
+            otherPosition.Normalize();
+            playercontroller.Attackted(otherPosition, HarmAmount);
+            return; 
+        }
     }
 }

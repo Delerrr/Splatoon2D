@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     //移动速度
     public float dive_speed = 10.0f;
     public float walk_speed = 10.0f;
+    public float low_speed = 3.0f;
     //方向键输入
     private float horizontal;
     private float vertical;
@@ -39,7 +40,10 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     //生命值
     public float maxHealth = 100;
-    private float currentHealth; 
+    private float currentHealth;
+    //在敌人墨水中每秒失去的生命值
+    public float HealthDecreaseInOtherInkPerSec = 5f;
+    private float HealthDecreaseTimePassed = 0;
     //墨水值
     public float maxInk = 20;
     private float currentInk;
@@ -119,9 +123,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift)) {
             Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
             Color tilecolor = tilemapcontroller.GetColorInPos(tilePosition);
-            if (Mathf.Approximately(tilecolor.r, playercolor.r) &&
-                Mathf.Approximately(tilecolor.g, playercolor.g) &&
-                Mathf.Approximately(tilecolor.b, playercolor.b)) {
+            if (tilemapcontroller.Colorcmp(tilecolor, playercolor)){ 
                 is_diving = true;
                 animator.SetBool("IsDiving", is_diving);
                 is_walking = false;
@@ -169,6 +171,18 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate() {
         move();
+        //是否在敌人的墨水中
+        Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
+        Color tilecolor = tilemapcontroller.GetColorInPos(tilePosition);
+        if (!tilemapcontroller.Colorcmp(playercolor, tilecolor) && !tilemapcontroller.Colorcmp(new Color(0, 0, 0), tilecolor)){ 
+            //在敌人的墨水中
+            if (HealthDecreaseTimePassed >= 1f) {
+                ChangeHealth(HealthDecreaseInOtherInkPerSec);
+                HealthDecreaseTimePassed = 0;
+            } else {
+                HealthDecreaseTimePassed += Time.deltaTime;
+            }
+        }
     }
 
     void SwitchWeapon() {

@@ -24,7 +24,7 @@ public class TilemapController : MonoBehaviour
         worldtilemap.SetColor(Pos, newColor);
     }
 
-    private bool Colorcmp(Color one, Color two) {
+    public bool Colorcmp(Color one, Color two) {
         return Mathf.Approximately(one.r, two.r) &&
                 Mathf.Approximately(one.r, two.r) &&
                 Mathf.Approximately(one.r, two.r) &&
