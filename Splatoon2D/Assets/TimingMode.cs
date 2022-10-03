@@ -45,7 +45,7 @@ public class TimingMode : MonoBehaviour
         TimeCount.text = $"Time: {(int)curTime}s";
         //玩家是否死亡
         if (PlayerController.IsDead) {
-            NoTimeOrDie(true);
+            NoTimeOrDie(false);
         } else if (Mathf.Approximately(curTime, 0)) { //时间是否耗尽
             NoTimeOrDie(true);
         } else if (Score >= TargetScore) {
@@ -64,6 +64,7 @@ public class TimingMode : MonoBehaviour
         } else {
             GameOverText.text = "You Have Died!";
             GameOver.SetActive(true);
+            PlayerController.IsDead = false;
         }
     }
 }
