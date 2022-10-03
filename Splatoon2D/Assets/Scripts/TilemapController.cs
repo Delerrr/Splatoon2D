@@ -9,9 +9,9 @@ public class TilemapController : MonoBehaviour
     public  Color Green;
     public  Color Blue;
     public  Color Red;
-    private static int GreenScore = 0;
-    private static int BlueScore = 0;
-    private static int RedScore = 0;
+    private int GreenScore = 0;
+    private int BlueScore = 0;
+    private int RedScore = 0;
 
     public void UpdateColor(Vector3Int Pos, Color newColor) {
         if (Colorcmp(worldtilemap.GetColor(Pos), newColor)) {

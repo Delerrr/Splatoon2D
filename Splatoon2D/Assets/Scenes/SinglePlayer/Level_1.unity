@@ -1194,6 +1194,16 @@ PrefabInstance:
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8019011076215781112, guid: d0037530150edbe47b51f4af35aa5df0,
+        type: 3}
+      propertyPath: low_speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019011076215781112, guid: d0037530150edbe47b51f4af35aa5df0,
+        type: 3}
+      propertyPath: walk_speed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0037530150edbe47b51f4af35aa5df0, type: 3}
 --- !u!1 &458990383
@@ -2882,11 +2892,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackBulletCube
       objectReference: {fileID: 0}
-    - target: {fileID: 3634125255130078069, guid: 580078d8861eb244ab6317e1c26ca5f0,
-        type: 3}
-      propertyPath: speed
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5704329784371788802, guid: 580078d8861eb244ab6317e1c26ca5f0,
         type: 3}
       propertyPath: m_RootOrder
@@ -3679,7 +3684,6 @@ GameObject:
   - component: {fileID: 2022935789}
   - component: {fileID: 2022935788}
   - component: {fileID: 2022935787}
-  - component: {fileID: 2022935792}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -35412,22 +35416,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &2022935792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022935785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldtilemap: {fileID: 0}
-  Green: {r: 0, g: 0, b: 0, a: 0}
-  Blue: {r: 0, g: 0, b: 0, a: 0}
-  Red: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2061838577
 GameObject:
   m_ObjectHideFlags: 0

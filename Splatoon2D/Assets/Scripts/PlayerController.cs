@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     //移动速度
     public float dive_speed = 10.0f;
     public float walk_speed = 10.0f;
-    public float low_speed = 3.0f;
+    public float low_speed = 0.1f;
     //方向键输入
     private float horizontal;
     private float vertical;
@@ -172,9 +172,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         move();
         //是否在敌人的墨水中
-        Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
-        Color tilecolor = tilemapcontroller.GetColorInPos(tilePosition);
-        if (!tilemapcontroller.Colorcmp(playercolor, tilecolor) && !tilemapcontroller.Colorcmp(new Color(1, 1, 1, 1), tilecolor)){ 
+        if (IsInOtherInk()){ 
             //在敌人的墨水中
             if (HealthDecreaseTimePassed >= 1f) {
                 ChangeHealth(-HealthDecreaseInOtherInkPerSec);
@@ -185,6 +183,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private bool IsInOtherInk() {
+        Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
+        Color tilecolor = tilemapcontroller.GetColorInPos(tilePosition);
+        return !tilemapcontroller.Colorcmp(playercolor, tilecolor) && !tilemapcontroller.Colorcmp(new Color(1, 1, 1, 1), tilecolor);
+    }
     void SwitchWeapon() {
         if (Input.GetKeyDown(KeyCode.Alpha1) && weapontag1 != 0) {
                 weapontag1 = 0;
@@ -217,7 +220,10 @@ public class PlayerController : MonoBehaviour
         if (is_diving) {
             xPos = dive_speed * horizontal * Time.deltaTime;
             yPos = dive_speed * vertical * Time.deltaTime;
-        } else {
+        } else if (IsInOtherInk()) {
+            xPos = low_speed * horizontal * Time.deltaTime;
+            yPos = low_speed * vertical * Time.deltaTime;
+        } else { 
             xPos = walk_speed * horizontal * Time.deltaTime;
             yPos = walk_speed * vertical * Time.deltaTime;
         }
