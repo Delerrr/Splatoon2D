@@ -38,8 +38,7 @@ public class PauseMenu : MonoBehaviour
         //设置鼠标可见
         Cursor.visible = true;
         Time.timeScale = 1f;
-        pausemenu.SetActive(false);
-        SceneManager.LoadScene("MainBoard");
+        SceneManager.LoadScene(0);
     }
 
     void ExitGameFunc() {

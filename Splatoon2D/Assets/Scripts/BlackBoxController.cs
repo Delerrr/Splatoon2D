@@ -2,8 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowBoxController : MonoBehaviour
+public class BlackBoxController : MonoBehaviour
 {
+    //子弹
+    public GameObject blackbullet;
+    //子弹发射方向
+    private Vector2 verticallaunchpos;
+    private Vector2 horizontallaunchpos;
+    //发射时间间隔
+    public float shootinterval = 5f;
+    private float shoottimepassed = 0;
+    //颜色 
+    public Color BoxColor;
+    //TilemapControler组件，用于染色
+    TilemapController tilemapcontroller;
     //伤害值
     public float harm = 10;
     //速度
@@ -33,6 +45,9 @@ public class YellowBoxController : MonoBehaviour
         oriPosx = position.x;
         oriPosy = position.y;
         rigidbody2d.isKinematic = false;
+        tilemapcontroller = gameObject.GetComponent<TilemapController>();
+        verticallaunchpos = new Vector2(0, -1);
+        horizontallaunchpos = new Vector2(-1, 0);
     }
 
     protected void ChangeRigidPosition(float xPos, float yPos) {
@@ -71,15 +86,59 @@ public class YellowBoxController : MonoBehaviour
                 timePassed += Time.deltaTime;
                 if (walkHorizontally) {
                     ChangeRigidPosition(oriDirection * Time.deltaTime * speed, 0f);
+                    Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
+                    tilemapcontroller.UpdateColor(tilePosition, BoxColor);
+                    if (shoottimepassed >= shootinterval) {
+                        shoottimepassed = 0;
+                        verticallaunchpos *= -1;
+                        GameObject bullet = Instantiate(blackbullet, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+                        SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
+                        bulletscript.Launch(tilemapcontroller, 1, verticallaunchpos);
+                    } else {
+                        shoottimepassed += Time.deltaTime;
+                    }
                 } else {
                     ChangeRigidPosition(0f, oriDirection * Time.deltaTime * speed);
+                    Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
+                    tilemapcontroller.UpdateColor(tilePosition, BoxColor);
+                    if (shoottimepassed >= shootinterval) {
+                        shoottimepassed = 0;
+                        horizontallaunchpos *= -1;
+                        GameObject bullet = Instantiate(blackbullet, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+                        SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
+                        bulletscript.Launch(tilemapcontroller, 1, horizontallaunchpos);
+                    } else {
+                        shoottimepassed += Time.deltaTime;
+                    }
                 }
             } else if (timePassed < 2 * halfCycle) {
                 timePassed += Time.deltaTime;
                 if (walkHorizontally) {
                     ChangeRigidPosition(-oriDirection * Time.deltaTime * speed, 0f);
+                    Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
+                    tilemapcontroller.UpdateColor(tilePosition, BoxColor);
+                    if (shoottimepassed >= shootinterval) {
+                        shoottimepassed = 0;
+                        verticallaunchpos *= -1;
+                        GameObject bullet = Instantiate(blackbullet, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+                        SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
+                        bulletscript.Launch(tilemapcontroller, 1, verticallaunchpos);
+                    } else {
+                        shoottimepassed += Time.deltaTime;
+                    }
                 } else {
                     ChangeRigidPosition(0f, -oriDirection * Time.deltaTime * speed);
+                    Vector3Int tilePosition = tilemapcontroller.GetCellPos(transform.position);
+                    tilemapcontroller.UpdateColor(tilePosition, BoxColor);
+                    if (shoottimepassed >= shootinterval) {
+                        shoottimepassed = 0;
+                        horizontallaunchpos *= -1;
+                        GameObject bullet = Instantiate(blackbullet, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+                        SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
+                        bulletscript.Launch(tilemapcontroller, 1, horizontallaunchpos);
+                    } else {
+                        shoottimepassed += Time.deltaTime;
+                    }
                 }
             } else {
                 timePassed = 0;

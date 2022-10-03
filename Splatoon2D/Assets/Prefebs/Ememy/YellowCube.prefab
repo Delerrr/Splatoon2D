@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 739909247932212220}
   - component: {fileID: 5393359277646280138}
   - component: {fileID: -4846233906654828293}
-  m_Layer: 0
+  - component: {fileID: 1587938598}
+  m_Layer: 10
   m_Name: YellowCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +127,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -146,9 +147,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3a82dc0a3ea314bb438ddd93b3679c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoxColor: {r: 0.7701673, g: 0.8207547, b: 0.2516465, a: 1}
   harm: 10
   speed: 10
-  walkHorizontally: 1
-  halfCycle: 3
-  oriDirection: 1
+  walkHorizontally: 0
+  halfCycle: 1
+  oriDirection: -1
   maxHealth: 25
+--- !u!114 &1587938598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350566376379375029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldtilemap: {fileID: 0}
+  Green: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
+  Blue: {r: 0.011764706, g: 0.13333334, b: 0.81960785, a: 0}
+  Red: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}

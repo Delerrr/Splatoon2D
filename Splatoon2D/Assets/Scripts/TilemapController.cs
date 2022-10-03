@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class TilemapController : MonoBehaviour
 {
-    public UnityEngine.Tilemaps.Tilemap worldtilemap;
+    public Tilemap worldtilemap;
     public  Color Green;
     public  Color Blue;
     public  Color Red;

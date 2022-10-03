@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -104,7 +102,7 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bullets[weapontag1], transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
             if (weapontag1 == 0) {
                 SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
-                bulletscript.Launch(tilemapcontroller);
+                bulletscript.Launch(tilemapcontroller, 0, transform.position);
                 ChangeInk(-smallBulletInkConsume);
             } else {
                 LaserBulletController bulletscript = bullet.GetComponent<LaserBulletController>();

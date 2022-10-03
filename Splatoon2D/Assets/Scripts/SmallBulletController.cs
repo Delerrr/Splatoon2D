@@ -49,17 +49,23 @@ public class SmallBulletController : MonoBehaviour
             return;
         }
     }
-    public void Launch(TilemapController controller) {
+
+    //clienttag: 0:玩家，1：敌人
+    public void Launch(TilemapController controller, int clienttag, Vector2 clientpos) {
         tilemapcontroller = controller;
         IsLaunched = true;
-        Vector2 Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Pos.x -= transform.position.x;
-        Pos.y -= transform.position.y;
-        float RotateDegree = Mathf.Rad2Deg * Mathf.Atan2(Pos.y, Pos.x);
-        //旋转至指向鼠标方向
-        transform.Rotate(0, 0, RotateDegree);
-        Pos.Normalize();
-        rigidbody2d.AddForce(Pos * force);
+        if (clienttag == 0) {
+            Vector2 Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Pos.x -= transform.position.x;
+            Pos.y -= transform.position.y;
+            float RotateDegree = Mathf.Rad2Deg * Mathf.Atan2(Pos.y, Pos.x);
+            //旋转至指向鼠标方向
+            transform.Rotate(0, 0, RotateDegree);
+            Pos.Normalize();
+            rigidbody2d.AddForce(Pos * force);
+        } else if (clienttag == 1) {
+            rigidbody2d.AddForce(clientpos * force);
+        } 
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

@@ -8,7 +8,7 @@ public class TimingMode : MonoBehaviour
     //游戏失败时显示GameOver界面
     public GameObject GameOver;
     //游戏获胜时显示Win界面
-    //public GameObject Win;
+    public GameObject Win;
     //显示“死亡”或“时间到！”
     public TMPro.TextMeshProUGUI GameOverText;
     //玩家颜色（用int表示，用于调用tilemapcontroller.GetScore）
@@ -54,7 +54,7 @@ public class TimingMode : MonoBehaviour
     }
 
     void WinFunc() {
-
+        Win.SetActive(true);
     }
 
     void NoTimeOrDie(bool tag) {

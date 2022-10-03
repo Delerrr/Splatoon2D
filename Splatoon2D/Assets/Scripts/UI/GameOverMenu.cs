@@ -29,8 +29,7 @@ public class GameOverMenu : MonoBehaviour
         //设置鼠标可见
         Cursor.visible = true;
         Time.timeScale = 1f;
-        gameovermenu.SetActive(false);
-        SceneManager.LoadScene("MainBoard");
+        SceneManager.LoadScene(0);
     }
 
     void ExitGameFunc() {
