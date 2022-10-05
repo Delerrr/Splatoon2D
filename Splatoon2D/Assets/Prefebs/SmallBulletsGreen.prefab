@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34d32b773efea948bc5ee3448f2566d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyTime: 0.5
+  HarmAmount: 5
+  FlyTime: 0.8
   Bulletcolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
   force: 300

@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     //各武器消耗墨水的量
     public float smallBulletInkConsume = 2;
     public float laserBulletInkConsume = 8;
+
     // Start is called before the first frame update
     void Start()
     {
