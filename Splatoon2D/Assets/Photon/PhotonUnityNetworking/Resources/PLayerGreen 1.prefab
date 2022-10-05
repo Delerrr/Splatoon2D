@@ -349,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6205976800987683284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -3.8, z: 0}
+  m_LocalPosition: {x: 53.66, y: -1.75, z: 0.1476635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -560,9 +560,9 @@ MonoBehaviour:
   - {fileID: 5610653080530013679, guid: fc519508752abea4fa7077be224db48e, type: 3}
   - {fileID: 5610653080530013679, guid: 9391f178acefa324abb1dae8b50f922d, type: 3}
   playercolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
-  dive_speed: 10
-  walk_speed: 1
-  low_speed: 0.1
+  dive_speed: 9
+  walk_speed: 5
+  low_speed: 3
   maxHealth: 100
   HealthDecreaseInOtherInkPerSec: 15
   maxInk: 20

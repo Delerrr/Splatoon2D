@@ -9,7 +9,8 @@ public class PlayerControllerOnline: MonoBehaviour
     //联网同步组件
     PhotonView photonview; 
     //是否死亡，用于显示相关界面
-    public static bool IsDead = false;
+    public static bool GIsDead = false;
+    public static bool RIsDead = false;
     //子弹发射时相对于玩家的位置
     private Vector3[,] BulletLauncPos;
     //TilemapControler组件，用于发射子弹（最终用于染色）
@@ -253,7 +254,11 @@ public class PlayerControllerOnline: MonoBehaviour
         currentHealth = Mathf.Clamp(amount + currentHealth, 0, maxHealth);
         HealthBarController.HealthBar.setValue(currentHealth / maxHealth);
         if (Mathf.Approximately(currentHealth, 0)) {
-            IsDead = true;
+            if (Mathf.Approximately(playercolor.r, 52f / 255)) {
+                GIsDead = true;
+            } else {
+                RIsDead = true;
+            }
         }
     }
 

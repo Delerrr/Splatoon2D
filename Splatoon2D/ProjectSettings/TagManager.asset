@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Enemy
   - gun_down
+  - Bullet
+  - VCM
   layers:
   - Default
   - TransparentFX
