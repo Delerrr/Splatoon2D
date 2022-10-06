@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2420469479300024785}
   - component: {fileID: -5418667715430513900}
   - component: {fileID: -4167876288600691727}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: SmallBulletsGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1920105705
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 8848993070067138329, guid: 34a83f07b212a8e448b59ed2bbefb190,
     type: 3}

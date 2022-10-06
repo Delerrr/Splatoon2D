@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2420469479300024785}
   - component: {fileID: -5953590756705337644}
   - component: {fileID: 307275903011892049}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: LaserBulletsGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

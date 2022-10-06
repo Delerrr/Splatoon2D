@@ -4,11 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - HealBox
-  - Ground
   - Enemy
-  - gun_down
-  - Bullet
   - VCM
   - Tilemap
   layers:
@@ -18,27 +14,18 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - Player
-  - Bullet
-  - Enemy
-  - Enviorment
-<<<<<<< HEAD
   - cinemachine
-  - EnemyBullet
-  - RedBulletOnline
-  - GreenBulletOnline
-  - RedPlayerOnline
-  - GreenPlayerOnline
-=======
+  - bullet
+  - player
+  - enemy
+  - enemybullet
   - 
   - 
   - 
   - 
   - 
   - 
->>>>>>> parent of 601376e (添加角色和镜头跟随)
+  - 
   - 
   - 
   - 
@@ -56,10 +43,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 1920105705
-    locked: 0
-  - name: Buiding
-    uniqueID: 323263115
     locked: 0
