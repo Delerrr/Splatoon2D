@@ -26,10 +26,10 @@ TagManager:
   - Enviorment
   - cinemachine
   - EnemyBullet
-  - 
-  - 
-  - 
-  - 
+  - RedBulletOnline
+  - GreenBulletOnline
+  - RedPlayerOnline
+  - GreenPlayerOnline
   - 
   - 
   - 

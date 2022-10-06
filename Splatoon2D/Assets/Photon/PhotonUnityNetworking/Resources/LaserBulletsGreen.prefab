@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8485857130461843295}
   - component: {fileID: -2902928603102761250}
   - component: {fileID: -9111036038535817918}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: LaserBulletsGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
