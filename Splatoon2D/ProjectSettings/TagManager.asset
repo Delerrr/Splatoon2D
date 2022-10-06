@@ -24,12 +24,21 @@ TagManager:
   - Bullet
   - Enemy
   - Enviorment
+<<<<<<< HEAD
   - cinemachine
   - EnemyBullet
   - RedBulletOnline
   - GreenBulletOnline
   - RedPlayerOnline
   - GreenPlayerOnline
+=======
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+>>>>>>> parent of 601376e (添加角色和镜头跟随)
   - 
   - 
   - 
