@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 8019011076215781112}
   - component: {fileID: 1698717904615802100}
   - component: {fileID: 2441738865122191155}
-  - component: {fileID: 3830981331337985710}
+  - component: {fileID: 1863627801982331353}
   m_Layer: 8
   m_Name: PLayerGreen
   m_TagString: Player
@@ -451,15 +451,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b3f33322b4ff54da0e0c14ac0c9bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerColorTag: 0
-  ScoreText: {fileID: 0}
   bullets:
   - {fileID: 5610653080530013679, guid: fc519508752abea4fa7077be224db48e, type: 3}
   - {fileID: 5610653080530013679, guid: 9391f178acefa324abb1dae8b50f922d, type: 3}
   playercolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
   dive_speed: 9
-  walk_speed: 5
+  walk_speed: 4
+  low_speed: 1
   maxHealth: 100
+  HealthDecreaseInOtherInkPerSec: 15
   maxInk: 100
   inkIncreaseSpeed: 15
   smallBulletInkConsume: 2
@@ -511,7 +511,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57167244, y: 0.5461576}
   m_EdgeRadius: 0
---- !u!114 &3830981331337985710
+--- !u!114 &1863627801982331353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6205976800987683284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7153abe7487844fb2fbdcf743bdc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   worldtilemap: {fileID: 0}

@@ -18,7 +18,7 @@ public class MainBoard : MonoBehaviour
     }
 
     void EnterMultiPlayer() {
-        SceneManager.LoadScene("OnlineScene");
+        SceneManager.LoadScene("OnlineScene 1");
     }
     void ExitGame() {
 #if     UNITY_EDITOR//在编辑器模式下

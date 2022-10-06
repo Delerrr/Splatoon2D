@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: -4610543380480448129}
   - component: {fileID: 5559350912687934158}
   - component: {fileID: -2243878015647953886}
+  - component: {fileID: -6462940723166679043}
   m_Layer: 8
   m_Name: PLayerGreen 1
   m_TagString: Player
@@ -509,6 +510,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -4610543380480448129}
   - {fileID: 5559350912687934158}
+  - {fileID: -6462940723166679043}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -560,15 +562,61 @@ MonoBehaviour:
   - {fileID: 5610653080530013679, guid: fc519508752abea4fa7077be224db48e, type: 3}
   - {fileID: 5610653080530013679, guid: 9391f178acefa324abb1dae8b50f922d, type: 3}
   playercolor: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
+  ColorTag: 0
   dive_speed: 9
   walk_speed: 5
   low_speed: 3
   maxHealth: 100
   HealthDecreaseInOtherInkPerSec: 15
-  maxInk: 20
-  inkIncreaseSpeed: 5
+  maxInk: 100
+  inkIncreaseSpeed: 15
   smallBulletInkConsume: 2
   laserBulletInkConsume: 8
+--- !u!114 &-6462940723166679043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205976800987683284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 1
+    SynchronizeType: 2
+    Name: Pos X
+  - Type: 1
+    SynchronizeType: 2
+    Name: Pos Y
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsDiving
+  - Type: 4
+    SynchronizeType: 1
+    Name: IsWalking
+  - Type: 1
+    SynchronizeType: 2
+    Name: StandPos X
+  - Type: 1
+    SynchronizeType: 2
+    Name: StandPos Y
+  - Type: 1
+    SynchronizeType: 2
+    Name: HitPosX
+  - Type: 1
+    SynchronizeType: 2
+    Name: HitPosY
+  - Type: 9
+    SynchronizeType: 2
+    Name: Hit
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &6205976801920966141
 GameObject:
   m_ObjectHideFlags: 0

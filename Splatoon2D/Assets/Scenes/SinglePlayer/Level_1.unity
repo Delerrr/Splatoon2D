@@ -1139,7 +1139,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3830981331337985710, guid: d0037530150edbe47b51f4af35aa5df0,
+    - target: {fileID: 1863627801982331353, guid: d0037530150edbe47b51f4af35aa5df0,
         type: 3}
       propertyPath: worldtilemap
       value: 
@@ -1206,19 +1206,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8019011076215781112, guid: d0037530150edbe47b51f4af35aa5df0,
         type: 3}
-      propertyPath: ScoreText
+      propertyPath: bullets.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5610653080530013679, guid: 7dc60fddff6016c4c9e7649894b132fd,
+        type: 3}
     - target: {fileID: 8019011076215781112, guid: d0037530150edbe47b51f4af35aa5df0,
         type: 3}
-      propertyPath: low_speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8019011076215781112, guid: d0037530150edbe47b51f4af35aa5df0,
+      propertyPath: bullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 5610653080530013679, guid: 4e53b4aaedc51fb40a2460df52743136,
         type: 3}
-      propertyPath: walk_speed
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0037530150edbe47b51f4af35aa5df0, type: 3}
 --- !u!1 &458990383
@@ -1938,7 +1935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldtilemap: {fileID: 2022935791}
   Green: {r: 0, g: 0, b: 0, a: 0}
   Blue: {r: 0, g: 0, b: 0, a: 0}
   Red: {r: 0, g: 0, b: 0, a: 0}
@@ -1950,6 +1946,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1587938598, guid: f8ea14d8662003d41accb6f5527e09af, type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
+    - target: {fileID: 335856007599622602, guid: f8ea14d8662003d41accb6f5527e09af,
+        type: 3}
       propertyPath: worldtilemap
       value: 
       objectReference: {fileID: 2022935791}
@@ -2334,6 +2335,11 @@ PrefabInstance:
       propertyPath: worldtilemap
       value: 
       objectReference: {fileID: 2022935791}
+    - target: {fileID: 335856007599622602, guid: f8ea14d8662003d41accb6f5527e09af,
+        type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
     - target: {fileID: 3350566376379375029, guid: f8ea14d8662003d41accb6f5527e09af,
         type: 3}
       propertyPath: m_Name
@@ -2606,7 +2612,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1587938598, guid: f8ea14d8662003d41accb6f5527e09af, type: 3}
+    - target: {fileID: 335856007599622602, guid: f8ea14d8662003d41accb6f5527e09af,
+        type: 3}
       propertyPath: worldtilemap
       value: 
       objectReference: {fileID: 2022935791}
@@ -2761,6 +2768,11 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1587938598, guid: f8ea14d8662003d41accb6f5527e09af, type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
+    - target: {fileID: 335856007599622602, guid: f8ea14d8662003d41accb6f5527e09af,
+        type: 3}
       propertyPath: worldtilemap
       value: 
       objectReference: {fileID: 2022935791}
@@ -2976,6 +2988,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6263424354958040742, guid: 580078d8861eb244ab6317e1c26ca5f0,
+        type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580078d8861eb244ab6317e1c26ca5f0, type: 3}
 --- !u!4 &1514263226 stripped
@@ -2991,10 +3008,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1587938598, guid: 580078d8861eb244ab6317e1c26ca5f0, type: 3}
-      propertyPath: worldtilemap
-      value: 
-      objectReference: {fileID: 2022935791}
     - target: {fileID: 3350566376379375029, guid: 580078d8861eb244ab6317e1c26ca5f0,
         type: 3}
       propertyPath: m_Name
@@ -3055,6 +3068,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6263424354958040742, guid: 580078d8861eb244ab6317e1c26ca5f0,
+        type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580078d8861eb244ab6317e1c26ca5f0, type: 3}
 --- !u!1 &1581277280
@@ -3286,6 +3304,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6263424354958040742, guid: 580078d8861eb244ab6317e1c26ca5f0,
+        type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580078d8861eb244ab6317e1c26ca5f0, type: 3}
 --- !u!1 &1773548745
@@ -3300,11 +3323,12 @@ GameObject:
   - component: {fileID: 1773548748}
   - component: {fileID: 1773548747}
   - component: {fileID: 1773548746}
-  - component: {fileID: 1773548752}
   - component: {fileID: 1773548751}
   - component: {fileID: 1773548750}
   - component: {fileID: 1773548753}
   - component: {fileID: 1773548754}
+  - component: {fileID: 1773548755}
+  - component: {fileID: 1773548756}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3438,22 +3462,6 @@ MonoBehaviour:
   TimeCount: {fileID: 1057000061}
   TotalTime: 120
   TargetScore: 5000
---- !u!114 &1773548752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773548745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldtilemap: {fileID: 2022935791}
-  Green: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
-  Blue: {r: 0.011764706, g: 0.13333334, b: 0.81960785, a: 0}
-  Red: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}
 --- !u!114 &1773548753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3484,6 +3492,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextLevel: {fileID: 4627453086958388331}
   BackToMain: {fileID: 1223466411983535912}
+--- !u!114 &1773548755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773548745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7153abe7487844fb2fbdcf743bdc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldtilemap: {fileID: 2022935791}
+  Green: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
+  Blue: {r: 0.011764706, g: 0.13333334, b: 0.81960785, a: 0}
+  Red: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}
+--- !u!114 &1773548756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773548745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b8e79f58171444b932f65c27d67233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mask: {fileID: 1328278969}
 --- !u!1001 &1810685041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3565,6 +3602,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6263424354958040742, guid: 580078d8861eb244ab6317e1c26ca5f0,
+        type: 3}
+      propertyPath: worldtilemap
+      value: 
+      objectReference: {fileID: 2022935791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580078d8861eb244ab6317e1c26ca5f0, type: 3}
 --- !u!1 &1870690474

@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Photon.Pun;
 
-public class SmallBulletController : MonoBehaviour
+public class SmallBulletControllerLocal : MonoBehaviour
 {
-    //联网同步组件
-    PhotonView photonview; 
     //伤害值
     public float HarmAmount = 5;
     //是否已经发射，用于决定update中是否进行染色
     bool IsLaunched = false;
     //TilemapController组件，用于涂色
-    TilemapController tilemapcontroller;
+    TilemapControllerLocal tilemapcontroller;
     //飞行时间
     public float FlyTime = 0.5f;
     private float TimeFlew = 0f;
@@ -26,8 +23,6 @@ public class SmallBulletController : MonoBehaviour
     void Awake()
     {
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
-        tilemapcontroller = gameObject.GetComponent<TilemapController>();
-        photonview = gameObject.GetComponent<PhotonView>();
     }
 
     private void Update() {
@@ -49,15 +44,13 @@ public class SmallBulletController : MonoBehaviour
                 tilemapcontroller.UpdateColor(tilePosition, newcolor);
                 tilePosition.y += 2;
                 tilemapcontroller.UpdateColor(tilePosition, newcolor);
-            if (photonview.IsMine) {
-                NetworkManager.DestroyGameObject(gameObject);
-            }
+                Destroy(gameObject);
             return;
         }
     }
 
     //clienttag: 0:玩家，1：敌人
-    public void Launch(TilemapController controller, int clienttag, Vector2 clientpos) {
+    public void Launch(TilemapControllerLocal controller, int clienttag, Vector2 clientpos) {
         tilemapcontroller = controller;
         IsLaunched = true;
         if (clienttag == 0) {
@@ -75,9 +68,7 @@ public class SmallBulletController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (photonview.IsMine) {
-            NetworkManager.DestroyGameObject(gameObject);
-        }
+        Destroy(gameObject);
         PlayerController playercontroller = other.gameObject.GetComponent<PlayerController>();
         if (playercontroller != null) {
             Vector2 otherPosition = other.transform.position;

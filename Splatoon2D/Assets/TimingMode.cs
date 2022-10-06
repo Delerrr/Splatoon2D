@@ -15,7 +15,7 @@ public class TimingMode : MonoBehaviour
     //0：G，1：B，2：R
     public int PlayerColorTag;
     //TilemapControler组件，用于记录分数
-    TilemapController tilemapcontroller;
+    TilemapControllerLocal tilemapcontroller;
     //显示倒计时
     public TMPro.TextMeshProUGUI TimeCount;
     //倒计时
@@ -28,13 +28,11 @@ public class TimingMode : MonoBehaviour
     void Start()
     {
         curTime = TotalTime;
-        tilemapcontroller = gameObject.GetComponent<TilemapController>();
+        tilemapcontroller = gameObject.GetComponent<TilemapControllerLocal>();
     }
 
 
     // Update is called once per frame
-    //TODO：
-    //根据分数或倒计时来决定游戏是否结束
     void Update()
     {
         //更新分数

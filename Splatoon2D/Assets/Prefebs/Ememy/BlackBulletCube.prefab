@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2114144064078351545}
   - component: {fileID: 739909247932212220}
   - component: {fileID: 5393359277646280138}
-  - component: {fileID: 1587938598}
   - component: {fileID: 3634125255130078069}
+  - component: {fileID: 6263424354958040742}
   m_Layer: 10
   m_Name: BlackBulletCube
   m_TagString: Enemy
@@ -135,22 +135,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1587938598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3350566376379375029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2285ff84644de6a4bbaca2ec276dfcd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldtilemap: {fileID: 0}
-  Green: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
-  Blue: {r: 0.011764706, g: 0.13333334, b: 0.81960785, a: 0}
-  Red: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}
 --- !u!114 &3634125255130078069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +157,19 @@ MonoBehaviour:
   halfCycle: 3
   oriDirection: 1
   maxHealth: 25
+--- !u!114 &6263424354958040742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350566376379375029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7153abe7487844fb2fbdcf743bdc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldtilemap: {fileID: 0}
+  Green: {r: 0.20392157, g: 0.8, b: 0.1764706, a: 0}
+  Blue: {r: 0.011764706, g: 0.13333334, b: 0.81960785, a: 0}
+  Red: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}

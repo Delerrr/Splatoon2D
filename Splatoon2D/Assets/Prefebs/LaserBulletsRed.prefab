@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6352662577607315499}
   - component: {fileID: -2420469479300024785}
   - component: {fileID: -5418667715430513900}
-  - component: {fileID: 8292983235602561625}
+  - component: {fileID: -3848212336337151390}
   m_Layer: 9
   m_Name: LaserBulletsRed
   m_TagString: Untagged
@@ -135,7 +135,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46922773, y: 0.20105721}
   m_EdgeRadius: 0
---- !u!114 &8292983235602561625
+--- !u!114 &-3848212336337151390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,9 +144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5610653080530013679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4052c125f33f8164387d1331bd88ae0f, type: 3}
+  m_Script: {fileID: 11500000, guid: b1e84288412b86546959470c763b616b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyTime: 1
+  HarmAmount: 10
+  FlyTime: 0.5
   Bulletcolor: {r: 0.85882354, g: 0.07058824, b: 0.07058824, a: 0}
-  force: 1500
+  force: 300

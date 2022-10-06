@@ -15,10 +15,14 @@ public class PlayerControllerOnline: MonoBehaviour
     private Vector3[,] BulletLauncPos;
     //TilemapControler组件，用于发射子弹（最终用于染色）
     TilemapController tilemapcontroller;
+    //分数
+    private int score = 0;
     //子弹预制件
     public GameObject[] bullets;
     //颜色
     public Color playercolor;
+    //颜色（用0、1、2表示）
+    public int ColorTag;
     //当前所持武器
     private GameObject weapon;
     //三种武器：新叶枪(1)、远距离喷涂枪（我称之为laser）(2)、炸弹(3)
@@ -104,17 +108,33 @@ public class PlayerControllerOnline: MonoBehaviour
         }
     }
 
-/*    public void GetTileMapController(TilemapController other) {
-        tilemapcontroller = other;
+/*    public void SetOpponetScore(string colorname, int Score) {
+        tilemapcontroller.UpdateOpponentScore(colorname, Score);
     }
-*/    // Update is called once per frame
-    void Update()
-    {
-        //如果不是当前客户机，直接返回
+*/    public float GetScore() {
+        return score;
+    }
+    void Update() {
+
         if (!photonview.IsMine) return;
+/*        if (ColorTag == 0) {
+            score = TilemapController.GreenScore;
+        } else {
+            score = TilemapController.RedScore;
+        }
+        //如果不是当前客户机，更新分数给对方
+        if (!photonview.IsMine) {
+            if (ColorTag == 0) {
+                NetworkManager.UpdateOpponentScore("Green", score);
+            } else {
+                NetworkManager.UpdateOpponentScore("Red", score);
+            }
+            return;
+        }
+*/
         //发射子弹
         if (Input.GetMouseButtonDown(0) && !is_diving && !Mathf.Approximately(currentInk, 0)) {
-            GameObject bullet = Instantiate(bullets[weapontag1], transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
+            GameObject bullet = NetworkManager.InstanstiateAndLaunch(bullets[weapontag1].name, transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
             if (weapontag1 == 0) {
                 SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
                 bulletscript.Launch(tilemapcontroller, 0, transform.position);

@@ -7,7 +7,7 @@ public class YellowBoxController : MonoBehaviour
     //颜色 
     public Color BoxColor;
     //TilemapControler组件，用于染色
-    TilemapController tilemapcontroller;
+    TilemapControllerLocal tilemapcontroller;
     //伤害值
     public float harm = 10;
     //速度
@@ -37,7 +37,7 @@ public class YellowBoxController : MonoBehaviour
         oriPosx = position.x;
         oriPosy = position.y;
         rigidbody2d.isKinematic = false;
-        tilemapcontroller = gameObject.GetComponent<TilemapController>();
+        tilemapcontroller = gameObject.GetComponent<TilemapControllerLocal>();
     }
 
     protected void ChangeRigidPosition(float xPos, float yPos) {
@@ -112,12 +112,12 @@ public class YellowBoxController : MonoBehaviour
             playercontroller.Attackted(otherPosition, harm);
             return; 
         }
-        LaserBulletController laserbulletcontroller = other.gameObject.GetComponent<LaserBulletController>(); 
+        LaserBulletControllerLocal laserbulletcontroller = other.gameObject.GetComponent<LaserBulletControllerLocal>(); 
         if (laserbulletcontroller != null) {
             ChangeHealth(-laserbulletcontroller.HarmAmount);
             return;
         }
-        SmallBulletController smallbulletcontroller = other.gameObject.GetComponent<SmallBulletController>();
+        SmallBulletControllerLocal smallbulletcontroller = other.gameObject.GetComponent<SmallBulletControllerLocal>();
         if (smallbulletcontroller != null) {
             ChangeHealth(-smallbulletcontroller.HarmAmount);
         }

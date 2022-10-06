@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     //子弹发射时相对于玩家的位置
     private Vector3[,] BulletLauncPos;
     //TilemapControler组件，用于发射子弹（最终用于染色）
-    TilemapController tilemapcontroller;
+    TilemapControllerLocal tilemapcontroller;
     //子弹预制件
     public GameObject[] bullets;
     //颜色
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        tilemapcontroller = gameObject.GetComponent<TilemapController>();
+        tilemapcontroller = gameObject.GetComponent<TilemapControllerLocal>();
         currentHealth = maxHealth;
         currentInk = maxInk;
         animator = GetComponent<Animator>();
@@ -106,11 +106,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !is_diving && !Mathf.Approximately(currentInk, 0)) {
             GameObject bullet = Instantiate(bullets[weapontag1], transform.position + BulletLauncPos[weapontag1, weapontag2], Quaternion.identity);
             if (weapontag1 == 0) {
-                SmallBulletController bulletscript = bullet.GetComponent<SmallBulletController>();
+                SmallBulletControllerLocal bulletscript = bullet.GetComponent<SmallBulletControllerLocal>();
                 bulletscript.Launch(tilemapcontroller, 0, transform.position);
                 ChangeInk(-smallBulletInkConsume);
             } else {
-                LaserBulletController bulletscript = bullet.GetComponent<LaserBulletController>();
+                LaserBulletControllerLocal bulletscript = bullet.GetComponent<LaserBulletControllerLocal>();
                 bulletscript.Launch(tilemapcontroller);
                 ChangeInk(-laserBulletInkConsume);
             }

@@ -1,20 +1,17 @@
-using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class LaserBulletController : MonoBehaviour
+public class LaserBulletControllerLocal : MonoBehaviour
 {
-    //联网同步组件
-    PhotonView photonview; 
     //伤害值
     public float HarmAmount = 10f;
     //是否已经发射，用于决定update中是否进行染色
     bool IsLaunched = false;
 
     //TilemapController组件，用于涂色
-    TilemapController tilemapcontroller;
+    TilemapControllerLocal tilemapcontroller;
     //飞行时间
     public float FlyTime = 0.5f;
     private float TimeFlew = 0f;
@@ -26,9 +23,7 @@ public class LaserBulletController : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     void Awake()
     {
-        tilemapcontroller = gameObject.GetComponent<TilemapController>();
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
-        photonview = gameObject.GetComponent<PhotonView>();
     }
 
     private void Update() {
@@ -45,14 +40,11 @@ public class LaserBulletController : MonoBehaviour
             tilemapcontroller.UpdateColor(tilePosition, newcolor);
         //销毁
         if (TimeFlew >= FlyTime) {
-            //Destroy(gameObject);
-            if (photonview.IsMine) {
-                NetworkManager.Destroy(gameObject);
-            }
+            Destroy(gameObject);
             return;
         }
     }
-    public void Launch(TilemapController controller) {
+    public void Launch(TilemapControllerLocal controller) {
         tilemapcontroller = controller;
         IsLaunched = true;
         Vector2 Pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -66,9 +58,7 @@ public class LaserBulletController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (photonview.IsMine) {
-            NetworkManager.DestroyGameObject(gameObject);
-        }
+        Destroy(gameObject);
         PlayerController playercontroller = other.gameObject.GetComponent<PlayerController>();
         if (playercontroller != null) {
             Vector2 otherPosition = other.transform.position;
