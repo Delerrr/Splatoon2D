@@ -19,10 +19,10 @@ TagManager:
   - player
   - enemy
   - enemybullet
-  - 
-  - 
-  - 
-  - 
+  - Gplayeronline
+  - Rplayeronine
+  - Gbullet
+  - Rbullet
   - 
   - 
   - 

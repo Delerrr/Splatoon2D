@@ -147,6 +147,8 @@ public class PlayerController : MonoBehaviour
                 standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
                 animator.SetFloat("Pos X", standPosX);
                 animator.SetFloat("Pos Y", standPosY);
+                animator.SetFloat("StandPos X", standPosX);
+                animator.SetFloat("StandPos Y", standPosY);
             }
         } else {
             //有方向键输入，则walk
@@ -156,6 +158,8 @@ public class PlayerController : MonoBehaviour
                 standPosY = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
                 animator.SetFloat("Pos X", standPosX);
                 animator.SetFloat("Pos Y", standPosY);
+                animator.SetFloat("StandPos X", standPosX);
+                animator.SetFloat("StandPos Y", standPosY);
             } else {
                 is_walking = false;
             }

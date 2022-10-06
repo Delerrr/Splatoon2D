@@ -276,10 +276,19 @@ public class PlayerControllerOnline: MonoBehaviour
         HealthBarController.HealthBar.setValue(currentHealth / maxHealth);
         if (Mathf.Approximately(currentHealth, 0)) {
             if (Mathf.Approximately(playercolor.r, 52f / 255)) {
-                GIsDead = true;
+                photonview.RPC("setDeadTag", RpcTarget.All, 0);
             } else {
-                RIsDead = true;
+                photonview.RPC("setDeadTag", RpcTarget.All, 2);
             }
+        }
+    }
+
+    [PunRPC]
+    private void setDeadTag(int tag) {
+        if (tag == 0) {
+            GIsDead = true;
+        } else if (tag == 2) {
+            RIsDead = true;
         }
     }
 
