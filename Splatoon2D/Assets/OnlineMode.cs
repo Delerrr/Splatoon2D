@@ -89,6 +89,9 @@ public class OnlineMode : MonoBehaviour
         IsReady = false;
         GScore = 0;
         RScore = 0;
+        PlayerControllerOnline.RIsDead = false;
+        PlayerControllerOnline.GIsDead = false;
+
         End.SetActive(true);
     }
 
@@ -104,6 +107,8 @@ public class OnlineMode : MonoBehaviour
         End.SetActive(true);
         }
         IsReady = false;
+        PlayerControllerOnline.RIsDead = false;
+        PlayerControllerOnline.GIsDead = false;
         GScore = 0;
         RScore = 0;
     }

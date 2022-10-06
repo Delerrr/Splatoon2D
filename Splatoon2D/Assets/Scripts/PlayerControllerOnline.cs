@@ -201,6 +201,7 @@ public class PlayerControllerOnline: MonoBehaviour
         ChangeHealth(-HarmAmount);
     }
     private void FixedUpdate() {
+        if (!photonview.IsMine) return;
         move();
         //是否在敌人的墨水中
         if (IsInOtherInk()){ 
