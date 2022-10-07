@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -38,6 +39,7 @@ public class PauseMenu : MonoBehaviour
         //设置鼠标可见
         Cursor.visible = true;
         Time.timeScale = 1f;
+        PhotonNetwork.Disconnect();
         SceneManager.LoadScene(0);
     }
 

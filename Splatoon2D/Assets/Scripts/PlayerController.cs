@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //子弹音效
+    AudioSource BulletSound;
     //是否死亡，用于显示相关界面
     public static bool IsDead = false;
     //子弹发射时相对于玩家的位置
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BulletSound = gameObject.GetComponent<AudioSource>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         tilemapcontroller = gameObject.GetComponent<TilemapControllerLocal>();
         currentHealth = maxHealth;
@@ -114,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 bulletscript.Launch(tilemapcontroller);
                 ChangeInk(-laserBulletInkConsume);
             }
+            BulletSound.Play(0);
         }
         //切换武器
         SwitchWeapon();

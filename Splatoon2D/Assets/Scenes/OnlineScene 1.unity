@@ -1961,8 +1961,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 346, y: -62}
-  m_SizeDelta: {x: 465.625, y: 72.94397}
+  m_AnchoredPosition: {x: 326.45, y: 327.02}
+  m_SizeDelta: {x: 470.122, y: 143.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &982553933
 MonoBehaviour:
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Waiting For Your Opponent '
+  m_text: Initializing ...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3033,6 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb7141e55e513a40a5f800a95e15f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaitingText: {fileID: 982553933}
   Grid: {fileID: 1191489852339565003, guid: 16be0b03796b2d24cae7c7e43927ffd9, type: 3}
   GreenPlayer: {fileID: 6205976800987683284, guid: 0aaf731ce5bfe034aa73cc3ff07caf82,
     type: 3}

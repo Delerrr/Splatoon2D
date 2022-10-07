@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class PlayerControllerOnline: MonoBehaviour
 {
+    //子弹音效
+    AudioSource BulletSound;
     //联网同步组件
     PhotonView photonview; 
     //是否死亡，用于显示相关界面
@@ -64,6 +66,7 @@ public class PlayerControllerOnline: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BulletSound = gameObject.GetComponent<AudioSource>();
         tilemapcontroller = NetworkManager.tilemapcontroller;
         photonview = gameObject.GetComponent<PhotonView>();
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -144,6 +147,7 @@ public class PlayerControllerOnline: MonoBehaviour
                 bulletscript.Launch(tilemapcontroller);
                 ChangeInk(-laserBulletInkConsume);
             }
+            BulletSound.Play(0);
         }
         //切换武器
         SwitchWeapon();

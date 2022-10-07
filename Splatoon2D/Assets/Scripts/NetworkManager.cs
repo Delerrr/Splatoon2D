@@ -10,6 +10,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public TilemapController tilemapcontrollerG;
 */
 
+
+    //等待时显示的文字
+    public TMPro.TextMeshProUGUI WaitingText;
     //不解释
     public static TilemapController tilemapcontroller;
     //用于实例化Tilemap
@@ -19,10 +22,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static CinemachineVirtualCamera myCinemachine;
     //是否进入房间，用于Update的判断条件
     bool IsInRoom = false;
-    //两个玩家各自的分数
+    //是否已经设置过IsReady，防止重复设置
+    bool HaveSetIsReady = false;
+/*    //两个玩家各自的分数
     private int GScore = 0;
     private int RScore = 0;
-    //玩家预制件
+*/    //玩家预制件
     public GameObject GreenPlayer;
     public GameObject RedPlayer;
 
@@ -47,16 +52,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     private void Update() {
-#if     UNITY_EDITOR//在编辑器模式下
-/*        if (IsInRoom)
-            print($"房间人数：{PhotonNetwork.CurrentRoom.PlayerCount}");
-*/
-#endif
-        if (!OnlineMode.IsReady && IsInRoom && PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.PlayerCount == 2) {
+        if (!OnlineMode.IsReady && IsInRoom && PhotonNetwork.CurrentRoom != null && PhotonNetwork.CurrentRoom.PlayerCount == 2 && !HaveSetIsReady && OnlineMode.EndOnlineMode == false) {
             OnlineMode.IsReady = true;
-        } 
+            HaveSetIsReady = true;
+        }
+        if (OnlineMode.EndOnlineMode == true)
+            OnlineMode.IsReady = false;
     }
     public override void OnConnectedToMaster() {
+        WaitingText.text = "Connected to Master";
         base.OnConnectedToMaster();
 #if     UNITY_EDITOR//在编辑器模式下
         print("Connected!");
@@ -65,17 +69,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         RoomOptions roomoptions = new RoomOptions();
         roomoptions.MaxPlayers = 2;
 #if UNITY_EDITOR
-        bool CreateRoom = PhotonNetwork.JoinOrCreateRoom("TestRoom", roomoptions, TypedLobby.Default);
-        print($"Create Room State:{CreateRoom}");
+        bool Created = PhotonNetwork.JoinOrCreateRoom("TestRoom", roomoptions, TypedLobby.Default);
+        print($"Create Room State:{Created}");
 #else
         PhotonNetwork.JoinOrCreateRoom("TestRoom", roomoptions, TypedLobby.Default);
 #endif
+        WaitingText.text = "Joining Room ...";
     }
 
     public override void OnJoinedRoom() {
+        WaitingText.text = "Joined Room!\n Waiting For Your Opponent.";
         base.OnJoinedRoom();
 #if UNITY_EDITOR 
         print("Joined Room!");
+#endif
+#if     UNITY_EDITOR//在编辑器模式下
+        if (PhotonNetwork.CurrentRoom != null)
+            print($"房间人数：{PhotonNetwork.CurrentRoom.PlayerCount}");
 #endif
         IsInRoom = true;
         if (GreenPlayer == null || RedPlayer == null) return;

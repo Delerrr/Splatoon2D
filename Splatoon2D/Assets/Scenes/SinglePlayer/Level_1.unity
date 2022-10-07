@@ -1139,6 +1139,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3372205813484737593, guid: d0037530150edbe47b51f4af35aa5df0,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863627801982331353, guid: d0037530150edbe47b51f4af35aa5df0,
         type: 3}
       propertyPath: worldtilemap

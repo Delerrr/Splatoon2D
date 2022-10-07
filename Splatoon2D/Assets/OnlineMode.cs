@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class OnlineMode : MonoBehaviour
 {
+    //是否结束在线模式
+    public static bool EndOnlineMode = false;
     //用来调用RPC以更新分数
     PhotonView photonView;
     //两人是否都在线，如果是，就开始计时
@@ -28,12 +30,14 @@ public class OnlineMode : MonoBehaviour
     //玩家颜色(由NetworkController来设置): 0:G, 1:B, 2:R
     public static int PlayerTag;
     //分数
-    public static int GScore = 0;
-    public static int RScore = 0;
+    int GScore = 0;
+    int RScore = 0;
     public int TargetScore = 7500;
     // Start is called before the first frame update
     void Start()
     {
+        EndOnlineMode = false;
+        IsReady = false;
         curTime = TotalTime;
         tilemapcontroller = gameObject.GetComponent<TilemapController>();
         //photonView = gameObject.GetComponent<PhotonView>();
@@ -57,6 +61,7 @@ public class OnlineMode : MonoBehaviour
             Waiting.SetActive(false);
             IsWaiting = false;
         }
+        EndOnlineMode = false;
         //更新分数
         if (PlayerTag == 0) {
             //GScore = tilemapcontroller.getScore(0);
@@ -86,13 +91,14 @@ public class OnlineMode : MonoBehaviour
         else if (GScore > RScore)
             EndText.text = "The Winner is Green!";
         else EndText.text = "It's a Draw!";
-        IsReady = false;
         GScore = 0;
         RScore = 0;
         PlayerControllerOnline.RIsDead = false;
         PlayerControllerOnline.GIsDead = false;
-
+        PhotonNetwork.LeaveRoom();
         End.SetActive(true);
+        IsWaiting = true;
+        EndOnlineMode = true;
     }
 
     void NoTimeOrDie(bool tag) {
@@ -106,10 +112,12 @@ public class OnlineMode : MonoBehaviour
             }
         End.SetActive(true);
         }
-        IsReady = false;
+        IsWaiting = true;
         PlayerControllerOnline.RIsDead = false;
         PlayerControllerOnline.GIsDead = false;
+        PhotonNetwork.LeaveRoom();
         GScore = 0;
         RScore = 0;
+        EndOnlineMode = true;
     }
 }
